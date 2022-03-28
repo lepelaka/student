@@ -6,13 +6,16 @@ import static utils.StudentUtil.nextLine;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.Test;
 import domain.Student;
 import exception.RangeException;
 
 public class StudentServiceImpl implements StudentService{
 	List<Student> students = new ArrayList<Student>();
 	{
-		String[] names = {"김경보","김동엽", "김상현", "김승종", "김예찬", "김치형", "김태윤"};
+		
+		
+		String[] names = {"김수한무거북이", "김경보","김동엽", "김상현", "김승종", "김예찬", "김치형", "김태윤"};
 		
 		for(int i = 0 ; i < names.length ; i++) {
 			students.add(new Student(220000 + i + 1 + "", names[i]));
@@ -24,10 +27,27 @@ public class StudentServiceImpl implements StudentService{
 	
 	// 1. 조회하기
 	public void list() {
-		System.out.println("학번        이름        국어        영어        수학        총점        평균\r\n" + 
-				"=============================================================================");
-		for(int i = 0 ; i < students.size() ; i++) {
-			System.out.println(students.get(i));
+//		System.out.println("학번        이름        국어        영어        수학        총점        평균\r\n" + 
+//				"=============================================================================");
+		System.out.println(String.format("%s%s%s%s%s%s%s"
+				, Test.convert("학번", 10)
+				, Test.convert("이름", 20)
+				, Test.convert("국어", 10)
+				, Test.convert("영어", 10)
+				, Test.convert("수학", 10)
+				, Test.convert("총점", 10)
+				, Test.convert("평균", 10)
+				));
+		System.out.println("====================================================================================");
+		for(Student s : students) {
+			System.out.print(Test.convert(s.getNo(), 10));
+			System.out.print(Test.convert(s.getName(), 20));
+			System.out.print(Test.convert(s.getKor()+"", 10));
+			System.out.print(Test.convert(s.getEng()+"", 10));
+			System.out.print(Test.convert(s.getMat()+"", 10));
+			System.out.print(Test.convert(s.sum()+"", 10));
+			System.out.print(Test.convert(s.avg()+"", 10));
+			System.out.println();
 		}
 	}
 	// 2. 등록하기
@@ -64,3 +84,4 @@ public class StudentServiceImpl implements StudentService{
 		return student;
 	}
 }
+

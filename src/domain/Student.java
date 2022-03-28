@@ -1,11 +1,12 @@
 ﻿package domain;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 // VO
 // 생성자 만드세요
 // 복사copy 복제clone
-public class Student {
+public class Student implements Serializable{
 	// 학번, 이름, 국어, 영어, 수학
 	private String no;
 	private String name;
